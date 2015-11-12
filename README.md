@@ -22,9 +22,9 @@ pgbackup:
   environment:
     - SCHEDULE=0 0 8 * * *
     - DBNAME=please-enter
-    - aws_s3_path=please-enter-path/to/your/bucket/
-    - aws_key=please-enter
-    - aws_secret=please-enter
+    - AWS_S3_PATH=please-enter-path/to/your/bucket/
+    - AWS_KEY=please-enter
+    - AWS_SECERT=please-enter
 
 postgres:
   image: postgres
@@ -39,11 +39,11 @@ postgres:
 
 `DBNAME` - database name to backup
 
-`aws_s3_path` - path to your amazon S3 bucket, for example: my-amazon-bucket/
+`AWS_S3_PATH` - path to your amazon S3 bucket, for example: my-amazon-bucket/
 
-`aws_key` - your Amazon API key
+`AWS_KEY` - your Amazon API key
 
-`aws_secret` - your Amazon API Secret
+`AWS_SECERT` - your Amazon API Secret
 
 `POSTGRES_PASSWORD` - your database userpassword
 
