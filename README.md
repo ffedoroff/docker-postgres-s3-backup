@@ -34,6 +34,9 @@ postgres:
   volumes:
     - /var/lib/postgresql/data
 ```
+On example above, tool will make automatic backup each day at 8am and upload it into S3 bucket. If you want to see real life example, please look on [docker-sentry](https://github.com/ffedoroff/docker-sentry) project.
+
+#### Environment variables
 
 `SCHEDULE` - is like linux cron syntax, but with seconds precise. (Second, Minute, Hour, Day_of_the_Month, Month_of_the_Year, Day_of_the_Week)
 
