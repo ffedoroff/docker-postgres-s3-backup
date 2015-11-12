@@ -1,0 +1,18 @@
+pgbackup:
+  image: docker-postgres-s3-backup
+  links:
+    - postgres
+  environment:
+    - SCHEDULE=0 0 8 * * *
+    - DBNAME=please-enter
+    - aws_s3_path=please-enter-path/to/your/bucket/
+    - aws_key=please-enter
+    - aws_secret=please-enter
+
+postgres:
+  image: postgres:9.4.5
+  environment:
+    - POSTGRES_PASSWORD=optional-value
+    - POSTGRES_USER=optional-value
+  volumes:
+    - /var/lib/postgresql/data
