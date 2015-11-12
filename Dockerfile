@@ -1,9 +1,9 @@
-FROM postgres
+FROM postgres:9.4.5
 
 RUN apt-get update -y && apt-get install -y s3cmd curl
 
-COPY backup.sh /
-COPY cron-task.sh /
+COPY backup-db.sh /
+COPY backup-upload.sh /
 COPY s3cfg /.s3cfg
 COPY s3setup.sh /
 COPY restore.sh /
