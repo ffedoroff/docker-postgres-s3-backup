@@ -1,8 +1,0 @@
-#!/bin/bash
-set -e
-
-PGHOST="$POSTGRES_PORT_5432_TCP_ADDR" \
-PGPORT="$POSTGRES_PORT_5432_TCP_PORT" \
-PGUSER="$POSTGRES_ENV_POSTGRES_USER" \
-PGPASSWORD="$POSTGRES_ENV_POSTGRES_PASSWORD" \
-pg_dump -Fc --clean --no-owner -h "$PGHOST" -p "$PGPORT" -U "$PGUSER" "$DBNAME" | gzip -c | cat > $1

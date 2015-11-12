@@ -8,12 +8,12 @@ set -e
 #
 # Check for required parameters
 #
-if [ -z "${aws_key}" ]; then
+if [ -z "${AWS_KEY}" ]; then
     echo "ERROR: The environment variable key is not set."
     exit 1
 fi
 
-if [ -z "${aws_secret}" ]; then
+if [ -z "${AWS_SECERT}" ]; then
     echo "ERROR: The environment variable secret is not set."
     exit 1
 fi
@@ -22,5 +22,5 @@ fi
 # Add key and secret in the /.s3cfg file with the one the user provided
 #
 cp /.s3cfg ~/.s3cfg
-echo "access_key=${aws_key}" >> ~/.s3cfg
-echo "secret_key=${aws_secret}" >> ~/.s3cfg
+echo "access_key=${AWS_KEY}" >> ~/.s3cfg
+echo "secret_key=${AWS_SECERT}" >> ~/.s3cfg
