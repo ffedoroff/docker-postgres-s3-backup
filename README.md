@@ -8,18 +8,47 @@ This tool works very good with docker-compose environment.
 
 1. **Restore tool** - restore Postgre database from Amazon S3 url.
 
-1. **Cron scedduler tool**. This package contains builtin [go-cron](https://github.com/odise/go-cron/) which interracts like ordinary cron but inside Docker container.
+1. **Cron scheduler tool**. This package contains builtin [go-cron](https://github.com/odise/go-cron/) which interracts like ordinary cron but inside Docker container.
 
 ## Use with docker-compose
 
 #### Create docker-compose file
-You might use docker-compose.sample.yml file
+You can use [docker-compose.sample.yml](https://github.com/ffedoroff/docker-postgres-s3-backup/blob/master/docker-compose.sample.yml) file as example. Please pay attention, that real postgres container should be called exactly `postgres`:
 ```
-git clone https://github.com/ffedoroff/docker-postgres-s3-backup.git
+pgbackup:
+  image: docker-postgres-s3-backup
+  links:
+    - postgres
+  environment:
+    - SCHEDULE=0 0 8 * * *
+    - DBNAME=please-enter
+    - aws_s3_path=please-enter-path/to/your/bucket/
+    - aws_key=please-enter
+    - aws_secret=please-enter
+
+postgres:
+  image: postgres
+  environment:
+    - POSTGRES_PASSWORD=optional-value
+    - POSTGRES_USER=optional-value
+  volumes:
+    - /var/lib/postgresql/data
 ```
 
+`SCHEDULE` - is like linux cron syntax, but with seconds precise
 
-Update parameters
+`DBNAME` - database name to backup
+
+`aws_s3_path` - path to your amazon S3 bucket, for example: my-amazon-bucket/
+
+`aws_key` - your Amazon API key
+
+`aws_secret` - your Amazon API Secret
+
+`POSTGRES_PASSWORD` - your database userpassword
+
+`POSTGRES_USER` - your database username
+
 
 ## Backup database manually
 You need to find docker container `pgbackup` full name or id using `docker ps` command.
