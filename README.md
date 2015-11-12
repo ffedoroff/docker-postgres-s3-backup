@@ -1,6 +1,6 @@
-# Postgres to s3 backup
+# Postgres to S3 backup tools
 
-# What is inside
+## What is inside
 
 1. **Backup tool**. You are able to backup particular Postgre database and upload it to Amazon S3 storage
 
@@ -9,7 +9,7 @@
 4. **Cron scedduler tool**. This package contains builtin `go-cron` which interracts like ordinary cron
 but in Docker container.
 
-# How to use
+## How to use
 
 ### clone repository
 
