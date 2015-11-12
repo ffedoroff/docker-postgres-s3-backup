@@ -1,6 +1,6 @@
 # Postgres to S3 backup tools
 
-This tool works very good with docker-compose environment.
+This tool able to backup manually, backup automatically and restore postgres databases and store it into Amazon S3 storage. This tool works very good in docker-compose environment.
 
 ## What is inside
 
@@ -35,7 +35,7 @@ postgres:
     - /var/lib/postgresql/data
 ```
 
-`SCHEDULE` - is like linux cron syntax, but with seconds precise
+`SCHEDULE` - is like linux cron syntax, but with seconds precise. (Second, Minute, Hour, Day_of_the_Month, Month_of_the_Year, Day_of_the_Week)
 
 `DBNAME` - database name to backup
 
@@ -49,8 +49,7 @@ postgres:
 
 `POSTGRES_USER` - your database username
 
-
-## Backup database manually
+#### Backup database manually
 You need to find docker container `pgbackup` full name or id using `docker ps` command.
 It is usually called `dockersentry_pgbackup_1` Then run: 
 ```
@@ -58,7 +57,7 @@ docker exec -it dockersentry_pgbackup_1 ./cron-task.sh
 ```
 And you will have proper database backup done, archived and uploaded to S3 storage.
 
-## Restore database
+#### Restore database
 You need to find url of your database archive in S3 storage and make it temporary public.
 For example your url is https://s3-us-west-1.amazonaws.com/your-bucket/sentry-20151110-021500.sql.gz
 Then you need to find docker container `pgbackup` full name or id using `docker ps` command.
