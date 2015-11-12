@@ -1,21 +1,23 @@
 # Postgres to S3 backup tools
 
+This tool works very good with docker-compose environment.
+
 ## What is inside
 
-1. **Backup tool**. You are able to backup particular Postgre database and upload it to Amazon S3 storage
+1. **Backup tool** - backup particular Postgre database and upload it to Amazon S3 storage
 
-1. **Restore tool**. You are able to restore Postgre database from Amazon S3 url.
+1. **Restore tool** - restore Postgre database from Amazon S3 url.
 
-4. **Cron scedduler tool**. This package contains builtin `go-cron` which interracts like ordinary cron
-but in Docker container.
+1. **Cron scedduler tool**. This package contains builtin [go-cron](https://github.com/odise/go-cron/) which interracts like ordinary cron but inside Docker container.
 
-## How to use
+## Use with docker-compose
 
-### clone repository
-
+#### Create docker-compose file
+You might use docker-compose.sample.yml file
 ```
 git clone https://github.com/ffedoroff/docker-postgres-s3-backup.git
 ```
+
 
 Update parameters
 
